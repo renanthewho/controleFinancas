@@ -1,0 +1,5 @@
+package br.com.ralmeida.financas.interfaces;
+
+public class Calculo {
+
+}
