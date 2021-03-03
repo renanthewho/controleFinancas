@@ -1,5 +1,7 @@
 package br.com.ralmeida.financas.services;
 
+import java.util.List;
+
 import br.com.ralmeida.financas.domain.Carteira;
 import br.com.ralmeida.financas.domain.Despesas;
 import br.com.ralmeida.financas.interfaces.Calculo;
@@ -10,13 +12,15 @@ public class CalculoImpl implements Calculo{
 	private double resultado;
 
 	@Override
-	public double subtrairValorCarteira(Despesas despesas, Carteira carteira) {
+	public Object subtrairValorCarteira(List<Despesas> despesas, Carteira carteira) {
 
-		if (despesas.getValor() > 0) {
-			resultado = carteira.getValor() - despesas.getValor();
-			// if(resulted>0) {
-			// return
-			// }
+		for(Despesas despesa : despesas){
+			if (despesa.getValor() > 0) {
+				resultado = carteira.getValor() - despesa.getValor();
+				 if(resultado<0) {
+				 return SALDO_INSUFICIENTE;
+				 }
+			}
 		}
 
 		return resultado;
