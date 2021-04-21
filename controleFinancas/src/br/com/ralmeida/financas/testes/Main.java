@@ -2,6 +2,7 @@ package br.com.ralmeida.financas.testes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import br.com.ralmeida.financas.domain.Carteira;
 import br.com.ralmeida.financas.domain.Despesas;
@@ -15,6 +16,7 @@ public class Main {
 
 		Object resultado;
 		final String SALDO_INSUFICIENTE = "O seu saldo na carteira é insuficiente.";
+		Scanner scan = new Scanner(System.in);
 
 		CalculoImpl calculo = new CalculoImpl();
 
@@ -25,9 +27,11 @@ public class Main {
 		
 		List<Despesas>despesas = new ArrayList<>();
 		
-		despesas.add(new DespesasVariaveis("Conta de Luz", 300, 03, 02));
-		despesas.add(new DespesasVariaveis("Agua", 99, 03, 02));
-		despesas.add(new DespesasFixas("Telefone", 59.90, 03, 02));
+		System.out.println("Entre um valor para a lista de Despesas.");
+		
+		despesas.add(new DespesasVariaveis(scan.nextLine(), scan.nextDouble(), scan.nextInt(), scan.nextInt()));
+//		despesas.add(new DespesasVariaveis("Agua", 99, 03, 02));
+//		despesas.add(new DespesasFixas("Telefone", 100, 03, 02));
 
 		resultado = calculo.subtrairValorCarteira(despesas, carteira);
 		
@@ -36,5 +40,7 @@ public class Main {
 		}else{
 			System.out.println(SALDO_INSUFICIENTE);
 		}
+		
+		scan.close();
 	}
 }

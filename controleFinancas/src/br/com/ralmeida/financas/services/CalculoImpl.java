@@ -18,7 +18,7 @@ public class CalculoImpl implements Calculo{
 			if (despesa.getValor() > 0) {
 				resultado = carteira.getValor() - despesa.getValor();
 				carteira.setValor(resultado);
-				despesa.isPago(despesa);
+				despesa.isPago(despesa, true);
 				 if(resultado<0) {
 				 return SALDO_INSUFICIENTE;
 				 }

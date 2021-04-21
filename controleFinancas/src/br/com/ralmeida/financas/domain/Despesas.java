@@ -30,7 +30,7 @@ public abstract class Despesas {
 		this.valor = valor;
 	}
 	
-	public boolean isPago(Despesas despesa) {
-		return false;
+	public boolean isPago(Despesas despesa, boolean pago) {
+		return pago;
 	}
 }
